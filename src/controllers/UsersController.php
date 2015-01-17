@@ -23,4 +23,19 @@ class UsersController extends Controller {
     {
         return Redirect::route('groups.adminBrowse');
     }
+
+    public function login()
+    {
+        return Redirect::to('/');
+    }
+
+    public function logout()
+    {
+        return Redirect::to('/');
+    }
+
+    public function register()
+    {
+        return Redirect::to('/');
+    }
 }
