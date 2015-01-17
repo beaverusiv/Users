@@ -38,10 +38,10 @@ class UsersController extends Controller {
         ]);
 
         if($attempt) {
-            // TODO: Change code to use config group IDs for greater performance.
-            // TODO: Redirect admin to /admin and others to /profile
-            //$redirect_route = Auth::user()->groups()->contain
-            return Redirect::intended('/');
+            // Redirect admin to /admin and others to /profile
+            // TODO: Put in the right routes
+            $redirect_route = Auth::user()->groups()->find(Config::get('permissions::admin_id')) ? 'groups.adminBrowse' : 'default.route';
+            return Redirect::intended(route($redirect_route));
         }
 
         return Redirect::route('users.loginForm')->withInput();
@@ -61,14 +61,15 @@ class UsersController extends Controller {
 
     public function register()
     {
+        // TODO: Form validation
         $user = User::create([
             'name' => Input::get('name'),
             'email' => Input::get('email'),
             'password' => Hash::make(Input::get('password'))
         ]);
 
-        $default_group = Group::where('name', '=', 'Default')->first();
-        $registered_group = Group::where('name', '=', 'Registered')->first();
+        $default_group = Group::find(Config::get('permissions::default_id'));
+        $registered_group = Group::find(Config::get('permissions::registered_id'));
 
         $user->groups()->save($default_group);
         $user->groups()->save($registered_group);
