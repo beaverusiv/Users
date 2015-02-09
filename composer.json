@@ -13,10 +13,9 @@
     },
     "autoload": {
         "classmap": [
-            "src/controllers"
         ],
-        "psr-0": {
-            "Bocapa\\Users": "src/"
+        "psr-4": {
+            "Bocapa\\Users\\": "src/"
         }
     },
     "minimum-stability": "stable"

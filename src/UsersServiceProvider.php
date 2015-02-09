@@ -18,8 +18,6 @@ class UsersServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-        $this->package('bocapa/users');
-
         \Event::listen('menu.generate', function()
         {
             $menu_options = [
@@ -38,10 +36,10 @@ class UsersServiceProvider extends ServiceProvider {
             ];
 
             $edit_user_options = [
-                    'a' => [
-                            'route' => 'users.adminEdit'
-                    ],
-                    'hidden' => true
+                'a' => [
+                    'route' => 'users.adminEdit'
+                ],
+                'hidden' => true
             ];
 
             if($menu = \Menu::exists('backend')) {
