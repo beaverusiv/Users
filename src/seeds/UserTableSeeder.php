@@ -15,7 +15,9 @@ class UserTableSeeder extends Seeder {
         DB::table('users')->delete();
         // If we're truncating users we need to do the
         // - same to the pivot table.
-        DB::table('group_user')->delete();
+        if(Schema::hasTable('group_user')) {
+            DB::table('group_user')->delete();
+        }
 
         User::create(array(
             'email' => 'nic@bocapa.com',
