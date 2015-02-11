@@ -47,20 +47,20 @@ Browse Users
                             <tbody>
                                 @foreach($users as $user)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at }}</td>
+                                    <td>{!! $user->id !!}</td>
+                                    <td>{!! $user->name !!}</td>
+                                    <td>{!! $user->email !!}</td>
+                                    <td>{!! $user->created_at !!}</td>
                                     <td>
-                                        {{ HTML::linkRoute('users.adminEdit', 'Edit', [$user->id], ['class' => 'btn btn-primary btn-sm']) }}
-                                        {{ HTML::linkRoute('users.adminDelete', 'Delete', [$user->id], ['class' => 'btn btn-danger btn-sm']) }}
+                                        {!! HTML::linkRoute('users.adminEdit', 'Edit', [$user->id], ['class' => 'btn btn-primary btn-sm']) !!}
+                                        {!! HTML::linkRoute('users.adminDelete', 'Delete', [$user->id], ['class' => 'btn btn-danger btn-sm']) !!}
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
 
-                        {{ $users->links(); }}
+                        {!! $users->links(); !!}
 
                     </div><!-- /.box-body -->
 
